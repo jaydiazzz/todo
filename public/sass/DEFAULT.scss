@@ -1,0 +1,178 @@
+@import "variables";
+
+/* ------------------- SCROLL BAR IN WEBKIT  ------------------- */
+
+a,a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  color: initial;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+  font-family: 'Roboto', sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.noselect,
+.navbar-nav li,
+.button {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+h1 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+section.cover {
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  background-color: white;
+  display:flex;
+  flex-flow: column;
+}
+
+section.cover .button {
+  position: fixed;
+  bottom: 100px;
+}
+
+#content {
+  background-color: #eee;
+}
+
+.logo-name {
+  font-size: 24px;
+  padding-left: 20px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+textarea {
+  resize: none;
+  height: 1.5em;
+  overflow: hidden;
+}
+
+.input {
+  flex: 3 0 auto;
+}
+
+.input input, textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #e3e3e3;
+  outline: 0;
+  background-color: transparent;
+}
+
+.input input:focus, textarea:focus {
+  border-bottom: 1px solid #294661;
+}
+
+.input-label {
+  position: relative;
+  margin: 0 0 -1em;
+  font-size: 16px;
+  padding: 0;
+  color: #294661;
+  transition: all .2s ease;
+}
+
+.input-label.active {
+  margin: 0;
+  font-size: 12px;
+  color: #294661;
+}
+
+.warning {
+  color: #ff5858;
+  font-size: 12px;
+}
+
+.dropdown {
+  flex: 1 0 auto;    
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  -moz-appearance: none;
+}
+
+.form-row *:not(.warning):not(:nth-of-type(1)) {
+  padding-left: 30px;
+}
+
+select {
+  border: 0;
+  outline: 0;
+  background-color: white;
+  border-bottom: 1px solid #e3e3e3;
+  width: 100%;
+  font-size: 16px;
+  color: #294661;
+  padding-bottom: 6px;
+}
+
+.button {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background: #294661;
+  color: white;
+  border-radius: 3px;
+  transition: all 0.1s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0 3px 3px rgba(0,0,0,0.5)
+}
+
+.button:active {
+  box-shadow: none;
+}
+
+.logout-button::before {
+  content: 'logout';
+  text-align: center;
+}
+
+.logout-button {
+  text-transform: uppercase;
+  color: $lightGreen;
+  padding: 15px 30px;
+  border : 1px solid $lightGreen;
+  text-align: center;
+  cursor: pointer;
+}
+
+.logout-button:active {
+  color: white;
+  background-color: $lightGreen;
+}
