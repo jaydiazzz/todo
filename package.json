@@ -1,14 +1,14 @@
 {
-  "name": "musd-parent-engagement-tool",
+  "name": "template",
   "version": "1.0.0",
-  "description": "Madera Unified Parent Engagement Tool",
+  "description": "Template",
   "main": "app.js",
   "scripts": {
     "test": "echo \"test\";"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SpacebarTech/musd-parent-engagement-tool.git"
+    "url": "git+https://github.com/SpacebarTech/template.git"
   },
   "keywords": [
     "MUSD",
@@ -19,9 +19,9 @@
   "author": "Tim Farrow",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SpacebarTech/musd-parent-engagement-tool/issues"
+    "url": "https://github.com/SpacebarTech/template/issues"
   },
-  "homepage": "https://github.com/SpacebarTech/musd-parent-engagement-tool#readme",
+  "homepage": "https://github.com/SpacebarTech/template#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
