@@ -5,16 +5,9 @@ var https          = require('https');
 var express        = require('express');
 var path           = require('path');
 var bodyParser     = require('body-parser');
-var keys           = require('./private/keys');                          // Custom Keys | NOT IN GIT
 
 // FIREBASE //
 var firebase       = require('firebase-admin');                          // 'firebase' node module is outdated.
-var serviceAccount = keys.firebase;
-
-firebase.initializeApp({                                                 // Initialize firebase app
-  databaseURL: "https://clarity-8d5b4.firebaseio.com",
-  credential: firebase.credential.cert( serviceAccount )
-});
 
 /* ---------------- routes ---------------- */
 
