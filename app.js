@@ -21,6 +21,16 @@ var app = express();
 app.set('views', path.join( __dirname, 'views' ));                       // use ./views as views directory
 app.set('view engine', 'pug');                                           // use pug as our templating engine
 
+// ENV MIDDLEWARE //
+var env = process.env.NODE_ENV || 'dev';
+app.use(function( req, res, next ) {
+
+	res.locals.env = env;
+	
+	next();
+
+})
+
 // RESOURCES //
 app.use('/static', express.static( __dirname + '/public') );             // serve requests to /static from /public
 

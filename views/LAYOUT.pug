@@ -2,7 +2,8 @@ doctype html
 html(lang="en")
   include ./partials/_head.pug
   body
-    block content
+    #content
+        block content
 
     //plugin JS
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
@@ -11,7 +12,10 @@ html(lang="en")
 
     script(src="/static/js/magicForm.js")
     script(src="/static/js/GLOBALS.js")
-    script(src="/static/js/knockout.js")
+    if ( env == 'dev' )
+        script(src="/static/js/vue.js")
+    if ( env == 'prod' )
+        script(src="/static/js/vue-prod.js")
         
     //custom JS
     block customJS
