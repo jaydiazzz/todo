@@ -12,9 +12,13 @@ html(lang="en")
 
     script(src="/static/js/magicForm.js")
     script(src="/static/js/GLOBALS.js")
-    if ( env == 'dev' )
+
+    if ( env == 'development' )
+        //- DEVELOPMENT STACK
         script(src="/static/js/vue.js")
-    if ( env == 'prod' )
+            
+    if ( env == 'production' )
+        //- PRODUCTION STACK
         script(src="/static/js/vue-prod.js")
         
     //custom JS
