@@ -1,17 +1,17 @@
 /* ------------- dependencies ------------- */
 
-var fs             = require('fs');
-var https          = require('https');
-var express        = require('express');
-var path           = require('path');
-var bodyParser     = require('body-parser');
+var fs         = require('fs');
+var https      = require('https');
+var express    = require('express');
+var path       = require('path');
+var bodyParser = require('body-parser');
 
 // FIREBASE //
-var firebase       = require('firebase-admin');                          // 'firebase' node module is outdated.
+var firebase = require('firebase-admin');                                // 'firebase' node module is outdated.
 
 /* ---------------- routes ---------------- */
 
-var index    = require('./routes/index');
+var index = require('./routes/index');
 
 /* ---------------- config ---------------- */
 
@@ -22,13 +22,10 @@ app.set('views', path.join( __dirname, 'views' ));                       // use 
 app.set('view engine', 'pug');                                           // use pug as our templating engine
 
 // ENV MIDDLEWARE //
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'production';
 app.use(function( req, res, next ) {
-
-	res.locals.env = env;
-	
+	res.locals.env = env; 												 // passes env variable to pug
 	next();
-
 })
 
 // RESOURCES //
