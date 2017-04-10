@@ -2,7 +2,8 @@ doctype html
 html(lang="en")
   include ./partials/_head.pug
   body
-    block content
+    #content
+        block content
 
     //plugin JS
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
@@ -15,8 +16,11 @@ html(lang="en")
     if ( env == 'development' )
         script(src='/static/GLOBALS/js/vue.js')
 
+            
     if ( env == 'production' )
-        script(src='/static/GLOBALS/js/vue-prod.js')
+        //- PRODUCTION STACK
+        script(src="/static/js/vue-prod.js")
+        
 
     //custom JS
     block customJS

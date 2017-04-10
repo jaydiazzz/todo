@@ -1,16 +1,17 @@
 /* ------------- dependencies ------------- */
 
-var fs             = require('fs');
-var https          = require('https');
-var express        = require('express');
-var path           = require('path');
-var bodyParser     = require('body-parser');
+var fs         = require('fs');
+var https      = require('https');
+var express    = require('express');
+var path       = require('path');
+var bodyParser = require('body-parser');
 
 // FIREBASE //
-var firebase       = require('firebase-admin');                          // 'firebase' node module is outdated.
+var firebase = require('firebase-admin');                                // 'firebase' node module is outdated.
 
 /* ---------------- routes ---------------- */
-var index    = require('./routes/index');
+
+var index = require('./routes/index');
 
 /* ---------------- config ---------------- */
 var app = express();
@@ -22,10 +23,9 @@ app.set('view engine', 'pug');                                           // use 
 // ENV MIDDLEWARE //
 var env = process.env.NODE_ENV || 'development';
 app.use(function( req, res, next ) {
-  res.locals.env = env;                                                  // passes env variable to pug
-  next();
+	res.locals.env = env; 												 // passes env variable to pug
+	next();
 })
-
 
 // RESOURCES //
 app.use('/static', express.static( __dirname + '/public') );             // serve requests to /static from /public

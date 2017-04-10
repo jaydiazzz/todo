@@ -4,7 +4,8 @@
   "description": "Template",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"test\";"
+    "test": "echo \"test\";",
+    "postinstall": "sass --update public/sass:public/css"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
     "firebase-admin": "^4.0.2",
     "fs": "0.0.1-security",
     "https": "^1.0.0",
+    "node-sass-middleware": "^0.11.0",
     "path": "^0.12.7",
     "pug": "^2.0.0-beta6",
     "sendgrid": "^4.7.1"

@@ -3,6 +3,15 @@ extends LAYOUT.pug
 block customCSS
 
 block content
-	h1 Hello world!
+	h1 {{ greeting }}
+	if ( env == 'development' )
+		h1 You are in the development environment
+		p This is all using development shit
+		p well done
+	else if ( env == 'production' )
+		h1 you are in a production environment
+		p please dont't ruin anything.
+		p i'm serious
 
 block customJS
+	script(src='/static/js/index.js')
