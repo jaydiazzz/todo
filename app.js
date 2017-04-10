@@ -21,6 +21,14 @@ var app = express();
 app.set('views', path.join( __dirname, 'views' ));                       // use ./views as views directory
 app.set('view engine', 'pug');                                           // use pug as our templating engine
 
+// ENV MIDDLEWARE //
+var env = process.env.NODE_ENV || 'development';
+app.use(function( req, res, next ) {
+  res.locals.env = env;                                                  // passes env variable to pug
+  next();
+})
+
+
 // RESOURCES //
 app.use('/static', express.static( __dirname + '/public') );             // serve requests to /static from /public
 
@@ -31,9 +39,33 @@ app.use(bodyParser.urlencoded({ extended: false }));                     // do n
 // ROUTING //
 app.use('/', index);
 
+// ERRORS //
+app.use(function(req, res, next) {
+  var err = new Error("Sorry! We were unable to find this page");
+  err.status = 404;
+  next(err);
+});
+
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  var title;
+  if (err.status == 404) {
+    title = "404: File Not Found"
+  }
+  else {
+    title = "'500: Internal Server Error'"
+  }
+  res.render('error', {
+    message: err.message,
+    status : err.status || 500,
+    error: {},
+    title: title
+  });
+});
+
 /* ---------------- create ---------------- */
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4200;
 app.listen( port , function() {
 	console.log("non-secure server on port " + port );
 });
