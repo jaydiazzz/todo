@@ -10,11 +10,9 @@ var bodyParser     = require('body-parser');
 var firebase       = require('firebase-admin');                          // 'firebase' node module is outdated.
 
 /* ---------------- routes ---------------- */
-
 var index    = require('./routes/index');
 
 /* ---------------- config ---------------- */
-
 var app = express();
 
 // VIEW ENGINE //
