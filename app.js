@@ -6,6 +6,42 @@ var express    = require('express');
 var path       = require('path');
 var bodyParser = require('body-parser');
 
+let envConfig;
+
+try {
+
+	envConfig = require("./env");
+
+} catch ( e ) {
+
+	console.log("There was a problem reading env.json. It should be in the root of your project")
+
+	throw new Error( e )
+
+}
+
+// set environment config
+for ( var i in envConfig ) {
+
+	try {
+
+		if ( process.env[i] != undefined )
+			console.warn(`env.json overwrites environment variable ${ i }. Currently it is ${ process.env[i] }. env.json specifies ${ envConfig[i] }`)
+
+		process.env[i] = envConfig[i];
+
+	} catch ( e ) {
+
+		envVariablesSet = false;
+
+		throw new Error("Couln't set environment variable: ", i );
+
+		break;
+
+	}
+
+}
+
 // FIREBASE //
 var firebase = require('firebase-admin');                                // 'firebase' node module is outdated.
 
@@ -39,26 +75,26 @@ app.use('/', index);
 
 // ERRORS //
 app.use(function(req, res, next) {
-  var err = new Error("Sorry! We were unable to find this page");
-  err.status = 404;
-  next(err);
+	var err = new Error("Sorry! We were unable to find this page");
+	err.status = 404;
+	next(err);
 });
 
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  var title;
-  if (err.status == 404) {
-    title = "404: File Not Found"
-  }
-  else {
-    title = "'500: Internal Server Error'"
-  }
-  res.render('error', {
-    message: err.message,
-    status : err.status || 500,
-    error: {},
-    title: title
-  });
+	res.status(err.status || 500);
+	var title;
+	if (err.status == 404) {
+		title = "404: File Not Found"
+	}
+	else {
+		title = "'500: Internal Server Error'"
+	}
+	res.render('error', {
+		message: err.message,
+		status : err.status || 500,
+		error: {},
+		title: title
+	});
 });
 
 /* ---------------- create ---------------- */
