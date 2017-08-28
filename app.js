@@ -20,6 +20,9 @@ try {
 
 }
 
+if ( !envConfig.hasOwnProperty("NODE_ENV") )
+	throw new Error("You must specify your NODE_ENV in env.json")
+
 // set environment config
 for ( var i in envConfig ) {
 
@@ -57,7 +60,7 @@ app.set('views', path.join( __dirname, 'views' ));                       // use 
 app.set('view engine', 'pug');                                           // use pug as our templating engine
 
 // ENV MIDDLEWARE //
-var env = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV;
 app.use(function( req, res, next ) {
 	res.locals.env = env; 												 // passes env variable to pug
 	next();
