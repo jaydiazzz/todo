@@ -39,6 +39,7 @@ public/.sass-cache
 *.map
 public/css
 .sass-cache
+env.json
 
 # Optional npm cache directory
 .npm
