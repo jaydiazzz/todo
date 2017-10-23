@@ -1,26 +1,30 @@
 doctype html
 html(lang="en")
-  include ./partials/_head.pug
-  body
-    #content
-        block content
+	head
+		title= title
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0')
 
-    //plugin JS
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js")
-    script(src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js")
+		// Plug In CSS
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet")
 
+		// custom CSS
+		link(rel="stylesheet", href="/static/css/DEFAULT.css", type="text/css")
 
-    script(src="/static/js/magicForm.js")
-    script(src="/static/js/GLOBALS.js")
+		block customCSS
 
-    if ( env == 'development' )
-        script(src='/static/GLOBALS/js/vue.js')
+	body
+		#content
+			block content
 
-            
-    if ( env == 'production' )
-        //- PRODUCTION STACK
-        script(src="/static/js/vue-prod.js")
-        
+	script(src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js")
+	script(src="/static/js/GLOBALS.js")
 
-    //custom JS
-    block customJS
+	if ( env === 'development' )
+		script(src='/static/js/vue.js')
+			
+	if ( env === 'production' )
+		script(src="/static/js/vue-prod.js")
+		
+	//custom JS
+	block customJS

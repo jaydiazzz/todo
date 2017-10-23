@@ -1,108 +1,69 @@
-/* ------------- dependencies ------------- */
+/* Environment Configuration */
 
-var fs         = require('fs');
-var https      = require('https');
-var express    = require('express');
-var path       = require('path');
-var bodyParser = require('body-parser');
+// This will not override system-set variables.
+require( 'apprequire' )( __dirname );
+require( 'dotenv' ).config();
 
-let envConfig;
+/* Dependencies */
 
-try {
+const https      = require( 'https' );
+const express    = require( 'express' );
+const path       = require( 'path' );
+const bodyParser = require( 'body-parser' );
 
-	envConfig = require("./env");
+/* Server Configuration */
 
-} catch ( e ) {
+const app = express();
 
-	console.log("There was a problem reading env.json. It should be in the root of your project")
+app.set( 'views', path.join( __dirname, 'views' ) ); // __dirname is the directory a file resides in
+app.set( 'view engine', 'pug' );
 
-	throw new Error( e )
+// set any variables that must
+// be passed to pug files here
+app.use( ( req, { locals }, next ) => {
 
-}
+  locals.env = process.env.NODE_ENV;
 
-if ( !envConfig.hasOwnProperty("NODE_ENV") )
-	throw new Error("You must specify your NODE_ENV in env.json")
+  next();
 
-// set environment config
-for ( var i in envConfig ) {
+} );
 
-	try {
+// serve resources in /public with /static
+app.use( '/static', express.static( path.join( __dirname, 'public' ) ) );
 
-		if ( process.env[i] != undefined )
-			console.warn(`env.json overwrites environment variable ${ i }. Currently it is ${ process.env[i] }. env.json specifies ${ envConfig[i] }`)
+// parse all of our requests into JSON
+app.use( bodyParser.json() );
 
-		process.env[i] = envConfig[i];
+// has to do with library extension. Must be false
+app.use( bodyParser.urlencoded( {
+  extended: false, 
+} ) );
 
-	} catch ( e ) {
+/* Routing */
 
-		envVariablesSet = false;
+const index = require( './routes/index' );
 
-		throw new Error("Couln't set environment variable: ", i );
+app.use( '/', index );
 
-		break;
+/* Error Responses */
 
-	}
+app.use( ( req, res, next ) => {
 
-}
+  res.render( 'error', {
+    message : 'We were unable to find this page',
+    status  : 404,
+    error   : {},
+    title   : '404',
+  } );
 
-// FIREBASE //
-var firebase = require('firebase-admin');                                // 'firebase' node module is outdated.
+} );
 
-/* ---------------- routes ---------------- */
+/* Final Server Initialization */
 
-var index = require('./routes/index');
+const port = process.env.PORT;
 
-/* ---------------- config ---------------- */
-var app = express();
+app.listen( port, () => {
 
-// VIEW ENGINE //
-app.set('views', path.join( __dirname, 'views' ));                       // use ./views as views directory
-app.set('view engine', 'pug');                                           // use pug as our templating engine
+  console.log( `App running on port: ${port}` );
 
-// ENV MIDDLEWARE //
-var env = process.env.NODE_ENV;
-app.use(function( req, res, next ) {
-	res.locals.env = env; 												 // passes env variable to pug
-	next();
-})
-
-// RESOURCES //
-app.use('/static', express.static( __dirname + '/public') );             // serve requests to /static from /public
-
-// REQUEST PARSING //
-app.use(bodyParser.json());                                              // parse post requests as JSON data
-app.use(bodyParser.urlencoded({ extended: false }));                     // do not allow nested objects in a post request
-
-// ROUTING //
-app.use('/', index);
-
-// ERRORS //
-app.use(function(req, res, next) {
-	var err = new Error("Sorry! We were unable to find this page");
-	err.status = 404;
-	next(err);
-});
-
-app.use(function(err, req, res, next) {
-	res.status(err.status || 500);
-	var title;
-	if (err.status == 404) {
-		title = "404: File Not Found"
-	}
-	else {
-		title = "'500: Internal Server Error'"
-	}
-	res.render('error', {
-		message: err.message,
-		status : err.status || 500,
-		error: {},
-		title: title
-	});
-});
-
-/* ---------------- create ---------------- */
-
-var port = process.env.PORT || 4200;
-app.listen( port , function() {
-	console.log("non-secure server on port " + port );
-});
+} );
