@@ -6,7 +6,6 @@ require( 'dotenv' ).config();
 
 /* Dependencies */
 
-const https      = require( 'https' );
 const express    = require( 'express' );
 const path       = require( 'path' );
 const bodyParser = require( 'body-parser' );
@@ -22,9 +21,9 @@ app.set( 'view engine', 'pug' );
 // be passed to pug files here
 app.use( ( req, { locals }, next ) => {
 
-  locals.env = process.env.NODE_ENV;
+	locals.env = process.env.NODE_ENV; // eslint-disable-line
 
-  next();
+	next();
 
 } );
 
@@ -36,7 +35,7 @@ app.use( bodyParser.json() );
 
 // has to do with library extension. Must be false
 app.use( bodyParser.urlencoded( {
-  extended: false, 
+	extended : false,
 } ) );
 
 /* Routing */
@@ -47,14 +46,14 @@ app.use( '/', index );
 
 /* Error Responses */
 
-app.use( ( req, res, next ) => {
+app.use( ( req, res ) => {
 
-  res.render( 'error', {
-    message : 'We were unable to find this page',
-    status  : 404,
-    error   : {},
-    title   : '404',
-  } );
+	res.render( 'error', {
+		message : 'We were unable to find this page',
+		status  : 404,
+		error   : {},
+		title   : '404',
+	} );
 
 } );
 
@@ -64,6 +63,6 @@ const port = process.env.PORT;
 
 app.listen( port, () => {
 
-  console.log( `App running on port: ${port}` );
+	console.log( `App running on port: ${port}` );
 
 } );
