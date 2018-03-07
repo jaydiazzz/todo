@@ -18,55 +18,44 @@ html, body {
 
   a:active {
     color: initial;
-  }
+	}
 
   h1 {
     font-size: 24px;
-  }
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		margin: 0px;
+	}
 
   p {
     font-size: 16px;
     margin: 0;
-    padding: 0;
+		padding: 0;
+		line-height: 150%;
   }
-  
+
   select {
     border: 0;
     outline: 0;
-    background-color: white;
-    border-bottom: 1px solid #e3e3e3;
-    width: 100%;
-    font-size: 16px;
-    color: #294661;
-    padding-bottom: 6px;
   }
 
   textarea {
     resize: none;
-    height: 1.5em;
     overflow: hidden;
   }
 
-  .button {
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px;
-    background: #294661;
-    color: white;
-    border-radius: 3px;
-    transition: all 0.1s ease;
-    cursor: pointer;
-  }
+	.button {
 
-  .button:hover {
-    box-shadow: 0 3px 3px rgba(0,0,0,0.5)
-  }
+		&:hover {
 
-  .button:active {
-    box-shadow: none;
-  }
+		}
+
+		&:active {
+
+		}
+
+	}
 
   .noselect,
   .navbar-nav li,
@@ -79,57 +68,6 @@ html, body {
     -ms-user-select: none;       /* Internet Explorer/Edge */
     user-select: none;           /* Non-prefixed version, currently
                                     not supported by any browser */
-  }
+	}
 
-  .input {
-    flex: 3 0 0;
-
-    input, textarea {
-      width: 100%;
-      border: 0;
-      border-bottom: 1px solid #e3e3e3;
-      outline: 0;
-      background-color: transparent;
-    }
-
-    input:focus, textarea:focus {
-      border-bottom: 1px solid #294661;
-    }
-
-    .input-label {
-      position: relative;
-      margin: 0 0 -1em;
-      font-size: 16px;
-      padding: 0;
-      color: #294661;
-      transition: all .2s ease;
-    }
-
-    .input-label.active {
-      margin: 0;
-      font-size: 12px;
-      color: #294661;
-    }
-
-    .warning {
-      color: #ff5858;
-      font-size: 12px;
-    }
-
-    .dropdown {
-      flex: 1 0 auto;    
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: flex-end;
-      -moz-appearance: none;
-    }
-
-    .form-row {
-    
-      *:not(.warning):not(:nth-of-type(1)) {
-        padding-left: 30px;
-      }
-    }
-  }
 }

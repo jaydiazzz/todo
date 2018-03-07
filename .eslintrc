@@ -54,6 +54,8 @@
     "no-underscore-dangle": "off"
   },
   "globals": {
-    "appRequire": true
+		"appRequire": true,
+		"firebase": true,
+		"window": true
   }
 }

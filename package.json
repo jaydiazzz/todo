@@ -4,8 +4,9 @@
   "description": "Template",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"test\";",
-    "postinstall": "sass --update public/sass:public/css"
+		"postinstall": "sass --update public/sass:public/css",
+    "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000",
+		"lint": "eslint ./"
   },
   "repository": {
     "type": "git",

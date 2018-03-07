@@ -22,9 +22,11 @@ html(lang="en")
 
 	if ( env === 'development' )
 		script(src='/static/js/vue.js')
-			
+		script(src='/static/js/firebase-dev.js')
+
 	if ( env === 'production' )
 		script(src="/static/js/vue-prod.js")
-		
+		script(src='/static/js/firebase-prod.js')
+
 	//custom JS
 	block customJS
