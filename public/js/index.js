@@ -4,3 +4,5 @@ let indexVM = new Vue( { // eslint-disable-line
 		greeting : 'Hello world!'
 	}
 } );
+
+const test = {};
