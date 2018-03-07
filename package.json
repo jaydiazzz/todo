@@ -5,18 +5,18 @@
   "main": "app.js",
   "scripts": {
 		"postinstall": "sass --update public/sass:public/css",
-    "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000",
-		"lint": "eslint ./"
-  },
+		"lint": "eslint ./",
+    "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000"
+	},
+	"pre-commit": [
+    "test"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SpacebarTech/template.git"
   },
   "keywords": [
-    "MUSD",
-    "Parent",
-    "Engagement",
-    "Tool"
+    "Template"
   ],
   "author": "Tim Farrow",
   "license": "ISC",
