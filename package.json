@@ -9,8 +9,7 @@
     "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000"
   },
   "pre-commit": [
-		"test",
-		"lint"
+		"test"
   ],
   "repository": {
     "type": "git",
