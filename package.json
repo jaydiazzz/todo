@@ -9,7 +9,7 @@
     "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000"
   },
   "pre-commit": [
-		"test"
+    "test"
   ],
   "repository": {
     "type": "git",
@@ -26,16 +26,19 @@
   "homepage": "https://github.com/SpacebarTech/template#readme",
   "dependencies": {
     "apprequire": "^1.0.1",
-    "body-parser": "^1.15.2",
+    "body-parser": "^1.18.2",
+    "celebrate": "^7.0.4",
+    "chai-as-promised": "^7.1.1",
     "dotenv": "^4.0.0",
-    "express": "^4.14.0",
-    "firebase-admin": "^4.0.2",
+    "express": "^4.16.2",
+    "firebase-admin": "^4.2.1",
     "fs": "0.0.1-security",
     "https": "^1.0.0",
+    "joi": "^13.1.2",
     "node-sass-middleware": "^0.11.0",
     "path": "^0.12.7",
-    "pug": "^2.0.0-beta6",
-    "sendgrid": "^4.7.1"
+    "pug": "^2.0.1",
+    "sendgrid": "^4.10.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",

@@ -56,6 +56,7 @@
   "globals": {
 		"appRequire": true,
 		"firebase": true,
-		"window": true
+		"window": true,
+		"libRequire": true
   }
 }

@@ -15,4 +15,4 @@ module.exports = {
 	createCAPITALIZEDTEMPLATE,
 	updateCAPITALIZEDTEMPLATE,
 	deleteCAPITALIZEDTEMPLATE
-}
+};

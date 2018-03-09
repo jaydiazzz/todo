@@ -1,11 +1,11 @@
 const express  = require( 'express' );
 
-const lib = libRequire( 'TEMPLATE' ) // Contains Service and Validators
+const lib = libRequire( 'TEMPLATE' ); // Contains Service and Validators
 
 
 const router = express.Router();
 
-router.post( '/TEMPLATE', lib.Validator.createCAPITALIZEDTEMPLATE, ( { body , params }, res, next ) => {
+router.post( '/TEMPLATE', lib.Validator.createCAPITALIZEDTEMPLATE, ( { body, params }, res, next ) => {
 
 } );
 

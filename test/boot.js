@@ -6,9 +6,8 @@ require( 'co-mocha' );
 const chai           = require( 'chai' );
 const chaiSubset     = require( 'chai-subset' );
 
-// uncomment if using promises for testing
-// const chaiAsPromised = require( 'chai-as-promised' );
-// chai.use( chaiAsPromised );
+const chaiAsPromised = require( 'chai-as-promised' );
+chai.use( chaiAsPromised );
 
 chai.use( chaiSubset );
 

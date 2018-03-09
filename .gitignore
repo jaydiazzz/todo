@@ -40,6 +40,7 @@ public/.sass-cache
 public/css
 .sass-cache
 env.json
+package-lock.json
 
 # Optional npm cache directory
 .npm
@@ -53,5 +54,5 @@ env.json
 # Output of 'npm pack'
 *.tgz
 
-# Sensitive variables, API keys, etc. 
-env.js 
+# Sensitive variables, API keys, etc.
+env.js
