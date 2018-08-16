@@ -1,18 +1,35 @@
 extends LAYOUT.pug
 
 block customCSS
+	link(rel='stylesheet', href='/static/css/index.css', type='text/css')
 
 block content
-	h1 {{ greeting }}
-	if ( env == 'development' )
-		h1 You are in the development environment
-		p This is all using development shit
-		p well done
-		a( href="https://www.youtube.com/watch?v=eh7lp9umG2I&t=1871s" ) Environment Information
-	else if ( env == 'production' )
-		h1 you are in a production environment
-		p please dont't ruin anything.
-		p i'm serious
+	.wrapper(:class='loginPrompt')
+		.welcome
+			h1 Hi {{ name }}
 
+		h1 Your Todo List
+
+		#todo
+			.list-item(v-for='( task, key ) in tasks')
+				a.delete-button(@click='remove( key )')
+					i.fas.fa-times.fa-2x
+				h4.title {{ task.title }}
+				p.desc {{ task.desc }}
+		
+		.input-row
+			input.input-title(type='text' placeholder='Title...' v-model='title')
+			input.input-desc(type='text' placeholder='Type your task here...' v-model='desc' @keyup.enter='submit()')
+			a.submit(@click.prevent='submit()') Submit
+
+		.logout
+			a.logout-button(@click='logout()') Logout
+		
+		.login-page(v-if='loginPrompt == "open"')
+			h1.main-title Uh Oh!
+			h1.sub-title We Can't Save Your Data
+				br
+				| Unless You Login First!
+			a.login(@click='login()') Login With Google
 block customJS
 	script(src='/static/js/index.js')

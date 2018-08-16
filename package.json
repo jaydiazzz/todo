@@ -4,7 +4,7 @@
   "description": "Template",
   "main": "app.js",
   "scripts": {
-    "postinstall": "sass --update public/sass:public/css",
+    "postinstall": "node-sass --watch public/sass -o public/css",
     "lint": "eslint ./",
     "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000"
   },
@@ -32,6 +32,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "firebase-admin": "^4.2.1",
+    "firebase-tools": "^4.1.1",
     "fs": "0.0.1-security",
     "https": "^1.0.0",
     "joi": "^13.1.2",
