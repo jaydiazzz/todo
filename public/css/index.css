@@ -131,6 +131,6 @@ body {
   .wrapper > h1 {
     margin-top: 30%; }
   #todo {
-    width: 80%; }
+    width: 90% !important; }
   .input-row {
-    width: 90%; } }
+    width: 90% !important; } }
