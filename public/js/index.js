@@ -79,7 +79,6 @@ const app = new Vue( { // eslint-disable-line
 				title : this.title,
 				desc  : description,
 			} );
-			console.log( 'pushed' );
 		},
 
 		login() {
