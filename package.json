@@ -4,6 +4,7 @@
   "description": "Template",
   "main": "app.js",
   "scripts": {
+    "sass": "node-sass --watch public/sass -o public/css",
     "lint": "eslint ./",
     "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000"
   },
