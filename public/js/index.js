@@ -103,7 +103,8 @@ const app = new Vue( { // eslint-disable-line
 				.then( () => {
 					console.log( 'signed out user' );
 				} )
-				.catch( () => {
+				.catch( ( error ) => {
+					console.log( error );
 				} );
 		},
 
